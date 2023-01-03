@@ -26,7 +26,7 @@ const IdleTimeOutHandler = ({
   const onActive = useCallback(() => {
     setIsIdle(false);
     parentActiveHandler();
-  }, [])
+  }, [parentActiveHandler])
 
   const onIdle = useCallback(() => {
     setIsIdle(true);
@@ -93,7 +93,7 @@ const IdleTimeOutHandler = ({
       removeEvents();
       worker.current?.terminate();
     };
-  }, [addEvents, removeEvents, onActive, onIdle, timeOutInterval]);
+  }, [addEvents, removeEvents, onActive, onIdle, timeOutInterval, countDownInterval, parentIdlHandler]);
 
   return <> {
     isIdle ? <Dialog
